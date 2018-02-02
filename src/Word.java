@@ -26,7 +26,7 @@ public class Word implements Comparable<Word> {
     */
    public static Comparator<Word> CompFreqDesc = new Comparator<Word>() 
    {
-      public int compare( Word w1, Word w2) 
+      public int compare(Word w1, Word w2) 
       {
          int f1 = w1.getCount();
          int f2 = w2.getCount();
