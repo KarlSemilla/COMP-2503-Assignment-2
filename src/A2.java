@@ -14,7 +14,7 @@ import java.util.Collections;
 public class A2 
 {
    
-   private ArrayList<Word> words = new ArrayList<Word>();
+   private SLL<Word> words = new SLL<Word>();
 
    private String[] stopwords = { "a", "about", "all", "am", "an", 
          "and", "any", "are", "as", "at", "be", "been", "but", "by", "can", 
@@ -66,7 +66,7 @@ public class A2
    private void printWords( int n) 
    {
       int i = 0;
-      while ( i < words.size() && i < n) 
+      while ( i < words.getSize() && i < n) 
       {
          System.out.println( words.get(i));
          i++;
@@ -143,4 +143,5 @@ public class A2
       printResults();
    }
 
+   
 }

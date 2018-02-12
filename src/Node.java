@@ -1,34 +1,34 @@
 
-public class Node<type> {
-    private type data;
-    private Node<type> next = null;
+public class Node<T> {
+    private T data;
+    private Node<T> next = null;
     
     public Node()
     {
     	
     }
     
-    public Node(type data) 
+    public Node(T data) 
     {
     		this.data=data;
     	}
     
-    public type getData() 
+    public T getData() 
     { 
     		return data;
     	}
     
-    public void setData(type value) 
+    public void setData(T value) 
     { 
     		data = value; 
     	}
            
-    public void setNext(Node<type> other)
+    public void setNext(Node<T> other)
     { 
     		next = other;
     	}
     
-    public Node<type> getNext() 
+    public Node<T> getNext() 
     { 
     		return next; 
     	}
