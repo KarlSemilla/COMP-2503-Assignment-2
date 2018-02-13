@@ -1,11 +1,11 @@
 
-public class Node<T> {
+public class Node<T extends Comparable<T>> {
     private T data;
     private Node<T> next = null;
     
     public Node()
     {
-    	
+    		data = this.data;
     }
     
     public Node(T data) 

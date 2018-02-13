@@ -63,12 +63,12 @@ public class A2
    List the first n words in the list of words.
    @param n the number of words to list
    */
-   private void printWords( int n) 
+   private void printWords(int n) 
    {
       int i = 0;
-      while ( i < words.getSize() && i < n) 
+      while ( i < words.size() && i < n) 
       {
-         System.out.println( words.get(i));
+         System.out.println(words.get(i));
          i++;
       }
    }
@@ -81,15 +81,15 @@ public class A2
        System.out.println( "Stop Words: " + stopwordcount);
        System.out.println();
        System.out.println( "10 Most Frequent");
-       Collections.sort( words, Word.CompFreqDesc); 
+       Collections.sort(words, Word.CompFreqDesc); 
        printWords(10); 
        System.out.println();
        System.out.println( "10 Least Frequent");
-       Collections.sort( words, Word.CompFreqAsc); 
+       Collections.sort(words, Word.CompFreqAsc); 
        printWords(10);
        System.out.println();
-       System.out.println( "All");
-       Collections.sort( words); 
+       System.out.println("All");
+       Collections.sort(words); 
        printWords( words.size());
    }
 
@@ -102,7 +102,7 @@ public class A2
    words are all converted to lower case. 
   
    Any non-stopword word is stored in the list of words 
-   and the number of occurances is tracked.
+   and the number of occurrences is tracked.
    */
    private void readFile() 
    {
@@ -114,21 +114,21 @@ public class A2
          if ( word.length() > 0) 
          { 
             totalwordcount++; 
-            if (stopword( word)) 
+            if (stopword(word)) 
             {
                stopwordcount++;
             }
             else
             {
-               Word w = new Word( word);
+               Word w = new Word(word);
                w.incrCount();
-               if ( words.contains( w))
+               if (words.contains(w))
                {
-                  words.get( words.indexOf( w)).incrCount();
+                  words.get(words.indexOf(w)).incrCount();
                }
                else 
                {   
-                  words.add( w);
+                  words.addToEnd(w);
                }
             }
          }

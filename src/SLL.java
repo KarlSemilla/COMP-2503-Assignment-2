@@ -54,9 +54,22 @@ public class SLL<T extends Comparable<T>> {
                 curr.setNext(nodeToAdd);
             }
             else
-                start = nodeToAdd;
-        
+                start = nodeToAdd;   
     }
+        
+       public T get(int index){
+            T data = null;
+            int length = size();
+            Node<T> curr = start;
+            
+            if (index <= length && index >=0){
+                curr = start;
+                for (int count = 0; count < index; count++)
+                    curr = curr.getNext();
+                data = curr.getData();    
+            }
+            return data;
+        }
     
     public void print()
     {
@@ -72,6 +85,19 @@ public class SLL<T extends Comparable<T>> {
 
         System.out.println("null");
     }
+
+	public boolean contains(Word w) {
+		boolean result = false;
+		while(start != null) {
+			if(tmp.getData() == w.getWord()) {
+				result = true;
+			}
+			else
+				result = false;
+			tmp.getNext();
+			}
+			return result;
+		}
     
     
 }
