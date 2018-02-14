@@ -15,6 +15,8 @@ public class A2
 {
    
    private SLL<Word> words = new SLL<Word>();
+   private SLL<Word> mostFreq = new SLL<Word>();
+   private SLL<Word> leastFreq = new SLL<Word>();
 
    private String[] stopwords = { "a", "about", "all", "am", "an", 
          "and", "any", "are", "as", "at", "be", "been", "but", "by", "can", 
@@ -80,17 +82,19 @@ public class A2
        System.out.println( "Unique Words: " + words.size()); 
        System.out.println( "Stop Words: " + stopwordcount);
        System.out.println();
-       System.out.println( "10 Most Frequent");
-       Collections.sort(words, Word.CompFreqDesc); 
+       System.out.println("10 Most Frequent");
+       //Collections.sort(words, Word.CompFreqDesc);
+       //Use SLL to get object/node at any given index, return to a new list.
        printWords(10); 
        System.out.println();
        System.out.println( "10 Least Frequent");
-       Collections.sort(words, Word.CompFreqAsc); 
+       //Collections.sort(words, Word.CompFreqAsc); 
+       //Use SLL to get object/node at any given index, return to a new list.
        printWords(10);
        System.out.println();
        System.out.println("All");
-       Collections.sort(words); 
-       printWords( words.size());
+       //Collections.sort(words); 
+       printWords(words.size());
    }
 
    /**  
@@ -124,7 +128,7 @@ public class A2
                w.incrCount();
                if (words.contains(w))
                {
-                  words.get(words.indexOf(w)).incrCount();
+                  words.get(words.get()).incrCount();
                }
                else 
                {   

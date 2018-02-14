@@ -2,12 +2,11 @@
 public class SLL<T extends Comparable<T>> {
 	private Node<T> start;
 	private Node<T> end;
-	private Node<T> tmp;
+	private T size;
 	
 	public SLL() {
 		start = null;
 		end = null;
-		tmp = null;
 	}
 	
     public int size(){
@@ -27,8 +26,14 @@ public class SLL<T extends Comparable<T>> {
     		return (start == null); 
     }
     
-	public int compareTo() {
-		return 1;
+	public void compareTo(T data) {
+		Node<T> tmp = start;
+		while(tmp != null) {
+			if(tmp != data) {
+				tmp.getData().compareTo(data);
+			}
+		}
+			tmp.getNext();
 	}
 	
     public void addToStart(T data) 
@@ -43,32 +48,31 @@ public class SLL<T extends Comparable<T>> {
         }
     }
         
-        public void addToEnd(T data) {
-            Node<T> nodeToAdd = new Node(data); 
-            if(start != null){
-                Node<T> curr = start;
-
-                while(curr.getNext() != null){
+    public void addToEnd(T data) {
+    		Node<T> nodeToAdd = new Node<T>(data); 
+    			if(start != null){
+    				Node<T> curr = start;
+    				while(curr.getNext() != null){
                    curr = curr.getNext();
                 }
-                curr.setNext(nodeToAdd);
+             curr.setNext(nodeToAdd);
             }
             else
-                start = nodeToAdd;   
+            		start = nodeToAdd;   
     }
         
-       public T get(int index){
-            T data = null;
-            int length = size();
-            Node<T> curr = start;
+    public T get(int index){
+    		T data = null;
+        int length = size();
+        Node<T> curr = start;
             
-            if (index <= length && index >=0){
-                curr = start;
-                for (int count = 0; count < index; count++)
-                    curr = curr.getNext();
-                data = curr.getData();    
+        if (index <= length && index >=0){
+        		curr = start;
+        		for (int count = 0; count < index; count++)
+        			curr = curr.getNext();
+        			data = curr.getData();    
             }
-            return data;
+        return data;
         }
     
     public void print()
@@ -88,15 +92,14 @@ public class SLL<T extends Comparable<T>> {
 
 	public boolean contains(Word w) {
 		boolean result = false;
-		while(start != null) {
+		Node<T> tmp = start;
+		while(tmp != null) {
 			if(tmp.getData() == w.getWord()) {
 				result = true;
 			}
-			else
-				result = false;
 			tmp.getNext();
 			}
-			return result;
+		return result;
 		}
     
     
