@@ -13,20 +13,12 @@ public class Node<T extends Comparable<T>> {
     		this.data=data;
     	}
     
-	public int compareTo(Node other) {
+	public int compareTo(Node<T> other) {
 		if(this.data == other.data) {
 			return 0;
 		}
 		else
 			return this.data.compareTo((T) other.data);
-		/*if(this.getData() == other.getData()) {
-			return 0;
-		}
-		else if(this.getData() != other.getData()) {
-			return 1;
-		}
-		else
-			return -1;*/
 	}
     
     public T getData() 

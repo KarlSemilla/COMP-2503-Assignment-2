@@ -1,10 +1,11 @@
 import java.util.Scanner;
-import java.util.ArrayList;
+//import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.List;
 import java.util.Collections;
 
 /** 
- * COMP 2503 Winter 2018 Assignment 1 
+ * COMP 2503 Winter 2018 Assignment 2 
  * 
  * This program reads a text file and compiles a list of the 
  * words together with how many each word appears. 
@@ -15,8 +16,8 @@ public class A2
 {
    
    private SLL<Word> words = new SLL<Word>();
-   private SLL<Word> mostFreq = new SLL<Word>();
-   private SLL<Word> leastFreq = new SLL<Word>();
+   private SLL<Word> mostFreq = words;
+   private SLL<Word> leastFreq = words;
 
    private String[] stopwords = { "a", "about", "all", "am", "an", 
          "and", "any", "are", "as", "at", "be", "been", "but", "by", "can", 
@@ -37,7 +38,7 @@ public class A2
 
    private Scanner inp = new Scanner( System.in);
 
-   public static void main(String[ ] args) 
+   public static void main(String[] args) 
    {	
       A2 a2 = new A2();
       a2.run();
@@ -68,13 +69,12 @@ public class A2
    private void printWords(int n) 
    {
       int i = 0;
-      while ( i < words.size() && i < n) 
+      while (i < words.size() && i < n) 
       {
          System.out.println(words.get(i));
          i++;
       }
    }
-
 
    private void printResults() 
    {
@@ -83,13 +83,13 @@ public class A2
        System.out.println( "Stop Words: " + stopwordcount);
        System.out.println();
        System.out.println("10 Most Frequent");
-       //Collections.sort(words, Word.CompFreqDesc);
-       //Use SLL to get object/node at any given index, return to a new list.
+       //Collections.sort(words, mostFreq);;
+       //mostFreq = words;
        printWords(10); 
        System.out.println();
        System.out.println( "10 Least Frequent");
        //Collections.sort(words, Word.CompFreqAsc); 
-       //Use SLL to get object/node at any given index, return to a new list.
+       //leastFreq = words;
        printWords(10);
        System.out.println();
        System.out.println("All");
@@ -110,8 +110,7 @@ public class A2
    */
    private void readFile() 
    {
-
-      while ( inp.hasNext()) 
+      while (inp.hasNext()) 
       {
          String word = inp.next().toLowerCase().trim().replaceAll( "[^a-z]","");
 
@@ -126,13 +125,18 @@ public class A2
             {
                Word w = new Word(word);
                w.incrCount();
-               if (words.contains(w))
+               Node<Word> x = new Node<Word>(w);
+               if(words.isEmpty()) 
                {
-                  words.get(words.get()).incrCount();
+            	   		words.addToStart(x);
+               }
+               else if (words.contains(x))
+               {
+            	   		words.get(words.getIndex(x)).incrCount();
                }
                else 
                {   
-                  words.addToEnd(w);
+            	   		words.addInOrder(x);
                }
             }
          }
